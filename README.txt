@@ -20,7 +20,7 @@ Einstellungen ändern
 
   window.CODEVOID_SETTINGS = {
     revealIso: "2025-10-20T20:00:00",
-    revealUrl: "https://instagram.com/code.void",
+    revealUrl: "https://instagram.com/cod.evoid",
     timezone: "Europe/Berlin"
   };
 
