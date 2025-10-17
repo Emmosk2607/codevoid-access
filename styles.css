@@ -1,0 +1,120 @@
+/* CODEVOID minimal ritual page */
+:root {
+  --bg: #000;
+  --fg: #e8e8e8;
+  --muted: #9a9a9a;
+  --accent: #e6c14a; /* gold */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.wrap {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.sig {
+  display: grid;
+  place-items: center;
+  padding: 6vh 24px 2vh;
+  text-align: center;
+  gap: 16px;
+  animation: fadeIn 1200ms ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+.v-symbol {
+  width: clamp(120px, 18vw, 220px);
+  height: clamp(140px, 22vw, 260px);
+  position: relative;
+  filter: drop-shadow(0 0 22px rgba(230,193,74,0.08));
+}
+
+.v-symbol::before,
+.v-symbol::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, transparent 45%, var(--accent) 46%, var(--accent) 54%, transparent 55%);
+  -webkit-mask:
+      linear-gradient(90deg, #000 0 50%, transparent 50%);
+  mask:
+      linear-gradient(90deg, #000 0 50%, transparent 50%);
+}
+
+.v-symbol::after {
+  transform: scaleX(-1);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(18px, 4.2vw, 42px);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: clamp(12px, 2.6vw, 16px);
+  margin: 0 0 4px;
+  opacity: .9;
+}
+
+.muted { color: var(--muted); }
+
+.cta {
+  display: inline-block;
+  transform: translateZ(0);
+  text-decoration: none;
+  color: #000;
+  background: var(--accent);
+  padding: 10px 18px;
+  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.hidden { display: none; }
+
+.count {
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.f {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: .5;
+}
+
+.tiny {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Subtle line jitter (glitch-lite) */
+@keyframes jitter {
+  0%,100% { transform: translate(0,0) }
+  50% { transform: translate(0.2px, -0.4px) }
+}
+.wrap, .v-symbol { animation: jitter 3.4s steps(2,end) infinite; }
